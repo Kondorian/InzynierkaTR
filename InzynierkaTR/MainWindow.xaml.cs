@@ -24,5 +24,22 @@ namespace InzynierkaTR
         {
             InitializeComponent();
         }
+
+   
+        private void listIngridient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listRecipe_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listFavourite_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
