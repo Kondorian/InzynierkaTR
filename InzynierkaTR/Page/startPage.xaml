@@ -1,0 +1,184 @@
+﻿<Page x:Class="InzynierkaTR.Page.startPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InzynierkaTR.Page"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="startPage">
+
+    <Page.Resources>
+        <!--TYTUL-->
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"       
+               TargetType="TextBlock"
+               x:Key="Podtytul">
+            <Setter Property="FontSize" Value="90"/>
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="#F0F0" />
+                            <GradientStop Offset="1.0" Color="#FFFFFF" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                             ShadowDepth="2"
+                                 Direction="300"
+                                Color="Green"
+                                Opacity="0.5"
+                                BlurRadius="40"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--ZWYKLY TEKST-->
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"    
+               TargetType="TextBlock"
+               x:Key="Tekst">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="Padding" Value="25 25 25 25" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.2,1" StartPoint="0,0">
+                        <GradientStop Color="OrangeRed"/>
+                        <GradientStop Color="White" Offset="0.4"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                             ShadowDepth="2"
+                                 Direction="300"
+                                Color="DarkGreen"
+                                Opacity="0.5"
+                                BlurRadius="40"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="FontStyle" Value="Italic"/>
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <!--BUTTON-->
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+
+
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="0" 
+                                BorderThickness="0"
+                                BorderBrush="White">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                         ShadowDepth="5"
+                             Direction="330"
+                            Color="Black"
+                            Opacity="0.5"
+                            BlurRadius="40"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="White" Offset="0.0"/>
+                <GradientStop Color="LawnGreen" Offset="1.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{StaticResource Podtytul}">
+            Gotój z nami
+        </TextBlock>
+
+        <Line Grid.Column="3" Grid.Row="2" Grid.RowSpan="8" 
+              X1="0" X2="0" Y1="0" Y2="2000"
+              ClipToBounds="True" HorizontalAlignment="Center" StrokeThickness="10" 
+              Margin="50 50 50 50">
+            <Line.Effect>
+                <DropShadowEffect ShadowDepth="50" Direction="150" BlurRadius="10"/>
+            </Line.Effect>
+            <Line.Stroke>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0.6,0">
+                    <GradientStop Color="#C50455C1"/>
+                    <GradientStop Color="#7E0800FF" Offset="0.215"/>
+                </LinearGradientBrush>
+            </Line.Stroke>
+        </Line>
+
+        <Button x:Name="listIngridient" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock  Style="{StaticResource Tekst}">
+            |> Dobierz składniki
+            </TextBlock>
+        </Button>
+
+        <Button x:Name="listRecipe" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock  Style="{StaticResource Tekst}">
+            |> Przeszukaj przepisy
+            </TextBlock>
+        </Button>
+
+        <Button x:Name="listFavourite" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <TextBlock  Style="{StaticResource Tekst}">
+            |> Ulubione przepisy
+            </TextBlock>
+        </Button>
+    </Grid>
+</Page>

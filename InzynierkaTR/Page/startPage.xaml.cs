@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using InzynierkaTR.Page;
 
-namespace InzynierkaTR
+namespace InzynierkaTR.Page
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for startPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class startPage
     {
-        public MainWindow()
+        public startPage()
         {
             InitializeComponent();
-            Main.Content = new startPage();
         }
-
     }
 }
