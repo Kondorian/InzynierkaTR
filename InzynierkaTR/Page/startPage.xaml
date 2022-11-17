@@ -163,19 +163,19 @@
             </Line.Stroke>
         </Line>
 
-        <Button x:Name="listIngridient" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Button x:Name="listIngridient" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="listIngridient_Click">
             <TextBlock  Style="{StaticResource Tekst}">
             |> Dobierz składniki
             </TextBlock>
         </Button>
 
-        <Button x:Name="listRecipe" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Button x:Name="listRecipe" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="listRecipe_Click">
             <TextBlock  Style="{StaticResource Tekst}">
             |> Przeszukaj przepisy
             </TextBlock>
         </Button>
 
-        <Button x:Name="listFavourite" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
+        <Button x:Name="listFavourite" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="listFavourite_Click">
             <TextBlock  Style="{StaticResource Tekst}">
             |> Ulubione przepisy
             </TextBlock>

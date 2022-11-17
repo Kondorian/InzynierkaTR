@@ -24,5 +24,23 @@ namespace InzynierkaTR.Page
         {
             InitializeComponent();
         }
+
+        private void listIngridient_Click(object sender, RoutedEventArgs e)
+        {
+            pageIngridient pageIngridient = new pageIngridient();
+            this.NavigationService.Navigate(pageIngridient);
+        }
+
+        private void listRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            pageRecipe pageRecipe = new pageRecipe();
+            this.NavigationService.Navigate(pageRecipe);
+        }
+
+        private void listFavourite_Click(object sender, RoutedEventArgs e)
+        {
+            pageHistory pageHistory = new pageHistory();    
+            this.NavigationService.Navigate(pageHistory);
+        }
     }
 }
