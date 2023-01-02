@@ -45,17 +45,17 @@
         <Style BasedOn="{StaticResource {x:Type TextBlock}}"    
                TargetType="TextBlock"
                x:Key="Tekst">
-            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontSize" Value="32"/>
             <Setter Property="TextAlignment" Value="Left" />
-            <Setter Property="Padding" Value="25 25 25 25" />
+            <Setter Property="Padding" Value="10 25 0 25" />
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Berlin Sans FB" />
             <Setter Property="FontWeight" Value="SemiBold" />
 
             <Setter Property="Foreground">
                 <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.2,1" StartPoint="0,0">
-                        <GradientStop Color="OrangeRed"/>
+                    <LinearGradientBrush EndPoint="0.5,4" StartPoint="0,0">
+                        <GradientStop Color="White"/>
                         <GradientStop Color="White" Offset="0.4"/>
                     </LinearGradientBrush>
                 </Setter.Value>
@@ -68,16 +68,9 @@
                                  Direction="300"
                                 Color="DarkGreen"
                                 Opacity="0.5"
-                                BlurRadius="40"/>
+                                BlurRadius="20"/>
                 </Setter.Value>
             </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Cursor" Value="Hand"/>
-                    <Setter Property="FontStyle" Value="Italic"/>
-                </Trigger>
-            </Style.Triggers>
 
         </Style>
         <!--BUTTON-->
@@ -112,6 +105,31 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!--TextBox-->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
+            <Setter Property="AllowDrop" Value="False" />
+            <Setter Property="Margin" Value="10 0 10 10" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <!--<Setter Property="Template">
+                <Setter.Value>
+                   <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Name="Border" CornerRadius="2" Padding="2" BorderThickness="1">
+                            <Border.Background>
+                                <SolidColorBrush Color="White" />
+                            </Border.Background>
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="Black" />
+                            </Border.BorderBrush>
+                        </Border> 
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>-->
+        </Style>
     </Page.Resources>
 
     
@@ -144,7 +162,14 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
-                
+
+        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{StaticResource Tekst}">
+        Przepisy:    
+        </TextBlock>
+
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="1" >
+
+        </TextBox>
             
             <!-- TODO: Implement listBox
             <ListBox Name="ImageList" ItemsSource="{Binding ImageList}" Margin="10,10,10,10" 
