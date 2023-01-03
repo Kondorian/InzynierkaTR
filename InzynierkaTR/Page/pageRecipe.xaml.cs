@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +13,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace InzynierkaTR.Page
 {
@@ -20,12 +23,14 @@ namespace InzynierkaTR.Page
     /// </summary>
     public partial class pageRecipe
     {
+        List<ImagePath> images = new List<ImagePath>();
+        string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         public pageRecipe()
         {
             InitializeComponent();
+            AddImages();
+            ImageList.ItemsSource = images;
         }
-
-        /* TODO: Implement functions to save Images + add favorite bool
         void AddImages()
         {
             var files = Directory.GetFiles(System.IO.Path.Combine(root, "Images\\Rozne\\Imprezy"), "*.*");
@@ -53,11 +58,11 @@ namespace InzynierkaTR.Page
             // Process open file dialog box results 
             if (ofd.ShowDialog() == true)
             {
-                var filename = ofd.FileName; // Get the filename from absolute path
+                var filename = ofd.FileName; 
                 var file = System.IO.Path.GetFullPath(ofd.FileName);
 
                 var filename2 = file.Substring(file.LastIndexOf("\\") + 1);
-                string _finalPath = System.IO.Path.Combine(root, "Images\\Rozne\\Imprezy").ToString(); //it is the destination folder path e.g,C:\Users\Neha\Pictures\11-03-2014
+                string _finalPath = System.IO.Path.Combine(root, "Images\\Rozne\\Imprezy").ToString(); 
                 if (Directory.Exists(_finalPath))
                 {
 
@@ -67,6 +72,6 @@ namespace InzynierkaTR.Page
                 }
 
             }
-        }*/
+        }
     }
 }
