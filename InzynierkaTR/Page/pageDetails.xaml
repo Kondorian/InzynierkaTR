@@ -1,4 +1,4 @@
-﻿<Page x:Class="InzynierkaTR.Page.pageRecipe"
+﻿<Page x:Class="InzynierkaTR.Page.pageDetails"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:InzynierkaTR.Page"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="pageRecipe">
+      Title="pageDetails">
 
     <Page.Resources>
         <!--TYTUL-->
@@ -79,6 +79,8 @@
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="Transparent"/>
+
+
             <Setter Property="Margin" Value="10,10,10,10"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -110,12 +112,13 @@
             <Setter Property="AllowDrop" Value="False" />
             <Setter Property="Margin" Value="10 0 10 10" />
             <Setter Property="FontSize" Value="22" />
-            <Setter Property="VerticalContentAlignment" Value="Top" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Height" Value="30" />
             <Setter Property="FontFamily" Value="Berlin Sans FB" />
         </Style>
     </Page.Resources>
-    <Grid MouseEnter="Grid_MouseEnter">
+
+    <Grid>
         <Grid.Background>
             <LinearGradientBrush>
                 <GradientStop Color="White" Offset="0.0"/>
@@ -145,18 +148,19 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Style="{StaticResource Tekst}">
-        Przepisy:
+        <TextBlock x:Name="textTitle"  Style="{StaticResource Tekst}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            
         </TextBlock>
 
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="1" >
+        <TextBlock Style="{StaticResource Tekst}" FontSize="25" Grid.Row="2" Grid.Column="1">
+            Składniki:
+        </TextBlock>
 
-        </TextBox>
 
-        <ListBox Name="ImageList" ItemsSource="{Binding ImageList}" Margin="10,10,10,10" 
+        <ListBox Name="IngridientList" ItemsSource="{Binding IngridientList}" Margin="10,10,10,10" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                 Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="7" SelectionChanged="ImageList_SelectionChanged">
+                 Grid.Row="3" Grid.Column="1" Grid.RowSpan="7" Grid.ColumnSpan="2">
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -167,25 +171,22 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="10,0,0,10">
-                        <Image Source="{Binding Path}" Width="200" Height="200" Stretch="Fill" VerticalAlignment="Top" StretchDirection="UpOnly" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
-                        <TextBox Name="ImageName" Margin="1" Foreground="#FF787878" Text="{Binding FileName}" HorizontalAlignment="Right" />
+                        <TextBlock Style="{StaticResource Tekst}" Text="{Binding Ingridients}" FontSize="15" />
                     </StackPanel>
                 </DataTemplate>
-
             </ListBox.ItemTemplate>
+            
             <ListBox.Template>
-                <ControlTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" >
-                        <ScrollViewer CanContentScroll="True">
-                            <ItemsPresenter/>
-                        </ScrollViewer>
-                    </Border>
-                </ControlTemplate>
+                <ControlTemplate/>
             </ListBox.Template>
         </ListBox>
-
-        <Button x:Name="buttonBack" Margin="10 10 10 10" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave" MouseLeftButtonUp="buttonBack_MouseLeftButtonUp" Click="buttonBack_Click">
+        
+        <Button x:Name="buttonBack" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" Click="buttonBack_Click" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave">
             <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" FontStyle="Normal" >Back</TextBlock>
         </Button>
+        
     </Grid>
+
+
+
 </Page>

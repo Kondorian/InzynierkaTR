@@ -42,5 +42,10 @@ namespace InzynierkaTR.Page
             pageHistory pageHistory = new pageHistory();    
             this.NavigationService.Navigate(pageHistory);
         }
+
+        private void listFavourite_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }
