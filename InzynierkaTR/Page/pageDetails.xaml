@@ -13,18 +13,19 @@
         <Style BasedOn="{StaticResource {x:Type TextBlock}}"       
                TargetType="TextBlock"
                x:Key="Podtytul">
-            <Setter Property="FontSize" Value="90"/>
-            <Setter Property="TextAlignment" Value="Center" />
-            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="FontFamily" Value="Berlin Sans FB" />
             <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="10 0 10 0"/>
 
             <Setter Property="Foreground">
                 <Setter.Value>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                         <LinearGradientBrush.GradientStops>
-                            <GradientStop Offset="0.0" Color="#F0F0" />
-                            <GradientStop Offset="1.0" Color="#FFFFFF" />
+                            <GradientStop Offset="0.0" Color="#50A0FF" />
+                            <GradientStop Offset="1.0" Color="#80DFF0" />
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </Setter.Value>
@@ -57,6 +58,39 @@
                     <LinearGradientBrush EndPoint="0.5,4" StartPoint="0,0">
                         <GradientStop Color="White"/>
                         <GradientStop Color="White" Offset="0.4"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                             ShadowDepth="2"
+                                 Direction="300"
+                                Color="DarkGreen"
+                                Opacity="0.5"
+                                BlurRadius="20"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <!--PODTYTUŁ-->
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"    
+               TargetType="TextBlock"
+               x:Key="Nadtekst">
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="Padding" Value="10 25 0 25" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="1.2,1.5">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#A0D0FF" Offset="1.5"/>
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
@@ -148,45 +182,27 @@
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="textTitle"  Style="{StaticResource Tekst}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
-            
+        <TextBlock x:Name="textTitle" Style="{StaticResource Podtytul}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            Title
         </TextBlock>
 
-        <TextBlock Style="{StaticResource Tekst}" FontSize="25" Grid.Row="2" Grid.Column="1">
+        <TextBlock Style="{StaticResource Nadtekst}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             Składniki:
         </TextBlock>
 
+        <TextBlock x:Name="IngridientList" Style="{StaticResource Tekst}" FontSize="25" 
+                   Grid.Row="3" Grid.Column="1" Grid.RowSpan="7" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
 
-        <ListBox Name="IngridientList" ItemsSource="{Binding IngridientList}" Margin="10,10,10,10" 
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                 ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                 Grid.Row="3" Grid.Column="1" Grid.RowSpan="7" Grid.ColumnSpan="2">
 
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+        <TextBlock Style="{StaticResource Nadtekst}" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" >
+            Instrukcja:
+        </TextBlock>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="10,0,0,10">
-                        <TextBlock Style="{StaticResource Tekst}" Text="{Binding Ingridients}" FontSize="15" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            
-            <ListBox.Template>
-                <ControlTemplate/>
-            </ListBox.Template>
-        </ListBox>
-        
+        <TextBlock x:Name="Instruction" Style="{StaticResource Tekst}" FontSize="20" TextWrapping="WrapWithOverflow"
+                   Grid.Row="3" Grid.Column="3" Grid.RowSpan="7" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
+
         <Button x:Name="buttonBack" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" Click="buttonBack_Click" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave">
             <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" FontStyle="Normal" >Back</TextBlock>
         </Button>
-        
     </Grid>
-
-
-
 </Page>

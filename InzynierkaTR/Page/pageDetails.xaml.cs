@@ -22,7 +22,6 @@ namespace InzynierkaTR.Page
     /// </summary>
     public partial class pageDetails
     {
-        List<String> ingridients = new List<String>();
         string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         string recipeTitle { get; set; }
         public pageDetails(string title)
@@ -31,7 +30,6 @@ namespace InzynierkaTR.Page
             textTitle.Text = title;
             recipeTitle = title;
             AddIngridients();
-            IngridientList.ItemsSource = ingridients;
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
@@ -46,11 +44,21 @@ namespace InzynierkaTR.Page
             using (StreamReader textFile = new StreamReader(path))
             {
                 string ln;
+                string text = "";
 
                 while ((ln = textFile.ReadLine()) != null)
                 {
-                    ingridients.Add(ln);//Add class IngridientList with Ingridient string because fuck off
+                    if (ln != "")
+                    {
+                        text = text + ln + "\n";
+                    }
+                    else
+                    {
+                        IngridientList.Text = text;
+                        text = "";
+                    }
                 }
+                Instruction.Text = text;
                 textFile.Close();
             }
         }

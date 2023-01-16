@@ -43,9 +43,17 @@ namespace InzynierkaTR.Page
             this.NavigationService.Navigate(pageHistory);
         }
 
-        private void listFavourite_MouseEnter(object sender, MouseEventArgs e)
-        {
 
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
+
+
+        private void buttonBack_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) { }
+        private void buttonBack_MouseEnter(object sender, MouseEventArgs e) { buttonBackText.FontStyle = FontStyles.Italic; }
+        private void buttonBack_MouseLeave(object sender, MouseEventArgs e) { buttonBackText.FontStyle = FontStyles.Normal; }
+        private void listFavourite_MouseEnter(object sender, MouseEventArgs e) { }
     }
 }
