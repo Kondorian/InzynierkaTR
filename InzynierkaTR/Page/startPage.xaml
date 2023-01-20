@@ -177,7 +177,7 @@
 
         <Button x:Name="listFavourite" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="listFavourite_Click" MouseEnter="listFavourite_MouseEnter">
             <TextBlock  Style="{StaticResource Tekst}">
-            |> Ulubione przepisy
+            |> Dodaj przepis
             </TextBlock>
         </Button>
 
