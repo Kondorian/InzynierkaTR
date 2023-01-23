@@ -203,11 +203,18 @@
             <TextBlock Text="+" Style="{StaticResource Podtytul}"  FontSize="30"/>
         </Button>
 
-        <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="6" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" Width="300">
+        <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.RowSpan="6" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" Width="250">
             <StackPanel x:Name="stackPanelRecipe" >
 
             </StackPanel>
         </ScrollViewer>
+
+        <ScrollViewer Grid.Row="4" Grid.Column="2" Grid.RowSpan="6" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" Width="250">
+            <StackPanel x:Name="stackPanelWeight" >
+
+            </StackPanel>
+        </ScrollViewer>
+
 
         <TextBlock Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" Style="{StaticResource Podtytul}" FontSize="25" HorizontalAlignment="Left">
             Instrukcja: 

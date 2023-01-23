@@ -66,6 +66,10 @@ namespace InzynierkaTR.Page
             string text = "Skladnik " + ingridients.ToString();
             TextBox myTextBox = new TextBox() { Text = text};
             stackPanelRecipe.Children.Add(myTextBox);
+
+            text = "Ilosc" + ingridients.ToString();
+            myTextBox = new TextBox() { Text = text};
+            stackPanelWeight.Children.Add(myTextBox);
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
@@ -88,6 +92,12 @@ namespace InzynierkaTR.Page
             foreach (var ingridient in stackPanelRecipe.Children.OfType<TextBox>())
             {
                 ingridientText[i] = ingridient.Text;
+                i++;
+            }
+            i = 0;
+            foreach (var ingridient in stackPanelWeight.Children.OfType<TextBox>())
+            {
+                ingridientText[i] = ingridientText[i] + "|" + ingridient.Text;
                 i++;
             }
             ingridientText[i] = "";
@@ -119,7 +129,5 @@ namespace InzynierkaTR.Page
         }
         private void buttonBack_MouseEnter(object sender, MouseEventArgs e) { buttonBackText.FontStyle = FontStyles.Italic; }
         private void buttonBack_MouseLeave(object sender, MouseEventArgs e) { buttonBackText.FontStyle = FontStyles.Normal; }
-
-
     }
 }
