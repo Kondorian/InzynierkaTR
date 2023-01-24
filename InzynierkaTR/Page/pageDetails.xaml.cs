@@ -44,21 +44,34 @@ namespace InzynierkaTR.Page
             using (StreamReader textFile = new StreamReader(path))
             {
                 string ln;
-                string text = "";
+                string Ingridient = "";
+                string Weight = "";
+                bool LastLine = false;
 
                 while ((ln = textFile.ReadLine()) != null)
                 {
+                    if (LastLine)
+                    {
+                        Ingridient = ln;
+                        break;
+                    }
+
                     if (ln != "")
                     {
-                        text = text + ln + "\n";
+                        int length = ln.IndexOf("|");
+                        Ingridient = Ingridient + ln.Substring(0,length) + "\n";
+                        Weight = Weight + ln.Substring(length + 1) + "\n";
                     }
                     else
                     {
-                        IngridientList.Text = text;
-                        text = "";
+                        IngridientList.Text = Ingridient;
+                        Ingridient = "";
+                        WeightList.Text = Weight;
+                        Weight = "";
+                        LastLine = true;
                     }
                 }
-                Instruction.Text = text;
+                Instruction.Text = Ingridient;
                 textFile.Close();
             }
         }
