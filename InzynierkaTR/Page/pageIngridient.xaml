@@ -8,7 +8,240 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="pageIngridient">
 
+    <Page.Resources>
+        <!--TYTUL-->
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"       
+               TargetType="TextBlock"
+               x:Key="Podtytul">
+            <Setter Property="FontSize" Value="90"/>
+            <Setter Property="TextAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="10,10,10,10"/>
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="#FF3EFF52" />
+                            <GradientStop Offset="2" Color="#FF5F5F5F" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                             ShadowDepth="2"
+                                 Direction="300"
+                                Color="Green"
+                                Opacity="0.5"
+                                BlurRadius="40"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--ZWYKLY TEKST-->
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"    
+               TargetType="TextBlock"
+               x:Key="Tekst">
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="Padding" Value="10 25 0 25" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,4" StartPoint="0,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="White" Offset="0.4"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                             ShadowDepth="2"
+                                 Direction="300"
+                                Color="DarkGreen"
+                                Opacity="0.5"
+                                BlurRadius="20"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <!--BUTTON-->
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="0" 
+                                BorderThickness="0"
+                                BorderBrush="White">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                         ShadowDepth="5"
+                             Direction="330"
+                            Color="Black"
+                            Opacity="0.5"
+                            BlurRadius="40"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="FontStyle" Value="Italic"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--TextBox-->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
+            <Setter Property="AllowDrop" Value="False" />
+            <Setter Property="Margin" Value="10 0 10 10" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+        </Style>
+
+        <!--PODTYTUŁ-->
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"    
+               TargetType="TextBlock"
+               x:Key="Nadtekst">
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="Padding" Value="10 25 0 25" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="1.2,1.5">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#A0D0FF" Offset="1.5"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                             ShadowDepth="2"
+                                 Direction="300"
+                                Color="DarkGreen"
+                                Opacity="0.5"
+                                BlurRadius="20"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+    </Page.Resources>
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="White" Offset="0.0"/>
+                <GradientStop Color="LawnGreen" Offset="1.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Style="{StaticResource Nadtekst}" FontSize="50" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="5">
+            SZUKAJ PRZEPISU
+        </TextBlock>
+
+        <TextBlock Style="{StaticResource Podtytul}" FontSize="30" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="2">
+            Składniki:
+        </TextBlock>
+
+        <Button x:Name="buttonPlus" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="buttonPlus_Click" >
+            <TextBlock Text="+" Style="{StaticResource Podtytul}"  FontSize="30"/>
+        </Button>
+
+        <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="6" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" Width="300">
+            <StackPanel x:Name="stackPanelRecipe" >
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button x:Name="buttonSearch" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="buttonSearch_Click" >
+            <TextBlock Text="Search" Style="{StaticResource Tekst}"  FontSize="20"/>
+        </Button>
+
+        <ListBox Name="ImageList" ItemsSource="{Binding ImageList}" Margin="10,10,10,10" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                 Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="7" SelectionChanged="ImageList_SelectionChanged">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="10,0,0,10">
+                        <Image Source="{Binding Path}" Width="200" Height="200" Stretch="Fill" VerticalAlignment="Top" StretchDirection="UpOnly"/>
+                        <TextBox Name="ImageName" Margin="1" Foreground="#FF787878" Text="{Binding FileName}" HorizontalAlignment="Right" />
+                    </StackPanel>
+                </DataTemplate>
+
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" >
+                        <ScrollViewer CanContentScroll="True">
+                            <ItemsPresenter/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+
+
+        <Button x:Name="buttonBack" Margin="10 10 10 10" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave" Click="buttonBack_Click">
+            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" >Back</TextBlock>
+        </Button>
     </Grid>
 </Page>
