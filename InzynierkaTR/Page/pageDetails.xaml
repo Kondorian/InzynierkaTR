@@ -190,10 +190,10 @@
             Składniki:
         </TextBlock>
 
-        <TextBlock x:Name="IngridientList" Style="{StaticResource Tekst}" FontSize="20" 
+        <TextBlock x:Name="IngridientList" Style="{StaticResource Tekst}" FontSize="25" 
                    Grid.Row="3" Grid.Column="1" Grid.RowSpan="7" Grid.ColumnSpan="1" VerticalAlignment="Top"/>
 
-        <TextBlock x:Name="WeightList" Style="{StaticResource Tekst}" FontSize="20" 
+        <TextBlock x:Name="WeightList" Style="{StaticResource Tekst}" FontSize="25" 
                    Grid.Row="3" Grid.Column="2" Grid.RowSpan="7" Grid.ColumnSpan="1" VerticalAlignment="Top"/>
 
 
@@ -201,7 +201,7 @@
             Instrukcja:
         </TextBlock>
 
-        <TextBlock x:Name="Instruction" Style="{StaticResource Tekst}" FontSize="20" TextWrapping="WrapWithOverflow"
+        <TextBlock x:Name="Instruction" Style="{StaticResource Tekst}" FontSize="25" TextWrapping="WrapWithOverflow"
                    Grid.Row="3" Grid.Column="3" Grid.RowSpan="7" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
 
         <Button x:Name="buttonBack" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" Click="buttonBack_Click" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave">

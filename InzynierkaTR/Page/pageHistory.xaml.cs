@@ -22,7 +22,9 @@ namespace InzynierkaTR.Page
     /// </summary>
     public partial class pageHistory
     {
-        string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        string _finalPath = System.IO.Path.Combine(
+            System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+            "Images\\").ToString();
         int ingridients = 0;
         string recipeFilename;  //Path
         string recipeName;      //Name
@@ -74,16 +76,14 @@ namespace InzynierkaTR.Page
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-            //Save everything, go back
-            string _finalPath = System.IO.Path.Combine(root, "Images\\Rozne\\Imprezy").ToString();
+
 
 
             if (Directory.Exists(_finalPath))
             {
                 var filename2 = recipeFilename.Substring(recipeFilename.LastIndexOf("\\") + 1);
-                _finalPath = System.IO.Path.Combine(_finalPath, filename2);
 
-                System.IO.File.Copy(recipeFilename, _finalPath, true);
+                System.IO.File.Copy(recipeFilename, System.IO.Path.Combine(_finalPath, filename2), true);
             }
 
             string[] ingridientText = new string[ingridients+2];
@@ -103,17 +103,14 @@ namespace InzynierkaTR.Page
             ingridientText[i] = "";
             ingridientText[i+1] = instructionBox.Text;
 
-            SaveFile(ingridientText, recipeName);
+            SaveFile(ingridientText, recipeName, _finalPath);
 
             startPage startPage = new startPage();
             this.NavigationService.Navigate(startPage);
         }
 
-        public static async Task SaveFile(string[] iText, string recipeName)
+        public static async Task SaveFile(string[] iText, string recipeName, string _finalPath)
         {
-            string _finalPath = System.IO.Path.Combine(
-                System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), 
-                "Images\\Rozne\\Imprezy\\").ToString();
             string name = recipeName + ".txt";
             using StreamWriter file = new(_finalPath + name);
             foreach (string line in iText)

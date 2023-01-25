@@ -37,7 +37,8 @@ namespace InzynierkaTR.Page
 
         void AddImages()
         {
-            var files = Directory.GetFiles(System.IO.Path.Combine(root, "Images\\Rozne\\Imprezy"), "*.*");
+            var files = Directory.GetFiles(System.IO.Path.Combine(root, "Images"), "*.*")
+                .Where(s => s.EndsWith(".jpg") || s.EndsWith(".png"));
 
             foreach (var file in files)
             {
@@ -55,31 +56,6 @@ namespace InzynierkaTR.Page
             string fileName = System.IO.Path.GetFileName(file);
             fileName = fileName.Substring(0, fileName.IndexOf("."));
             return fileName;
-        }
-
-        void CopyImages()
-        {
-            var ofd = new OpenFileDialog();
-            ofd.Filter = "Image jpeg(*.jpg)|*.jpg|Image png(*.png)|*.png";
-            ofd.DefaultExt = ".jpeg";
-
-            // Process open file dialog box results 
-            if (ofd.ShowDialog() == true)
-            {
-                var filename = ofd.FileName; 
-                var file = System.IO.Path.GetFullPath(ofd.FileName);
-
-                var filename2 = file.Substring(file.LastIndexOf("\\") + 1);
-                string _finalPath = System.IO.Path.Combine(root, "Images\\Rozne\\Imprezy").ToString(); 
-                if (Directory.Exists(_finalPath))
-                {
-
-                    _finalPath = System.IO.Path.Combine(_finalPath, filename2);
-
-                    System.IO.File.Copy(file, _finalPath, true);
-                }
-
-            }
         }
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

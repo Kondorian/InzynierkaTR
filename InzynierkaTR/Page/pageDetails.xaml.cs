@@ -40,7 +40,7 @@ namespace InzynierkaTR.Page
 
         void AddIngridients()
         {
-            string path = root + "\\Images\\Rozne\\Imprezy\\" + recipeTitle + ".txt";
+            string path = root + "\\Images\\" + recipeTitle + ".txt";
             using (StreamReader textFile = new StreamReader(path))
             {
                 string ln;
