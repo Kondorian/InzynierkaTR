@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +13,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace InzynierkaTR.Page
@@ -20,10 +22,22 @@ namespace InzynierkaTR.Page
     /// </summary>
     public partial class startPage
     {
+
         public startPage()
         {
             InitializeComponent();
+            string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string path = root + "\\Ingridients.txt";
+            if (!File.Exists(path))
+            {
+                SaveFile(path);
+            }
         }
+        public static async Task SaveFile(string _finalPath)
+        {
+            using StreamWriter file = new(_finalPath);
+        }
+
 
         private void listIngridient_Click(object sender, RoutedEventArgs e)
         {

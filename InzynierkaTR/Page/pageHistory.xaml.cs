@@ -25,6 +25,7 @@ namespace InzynierkaTR.Page
         string _finalPath = System.IO.Path.Combine(
             System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
             "Images\\").ToString();
+        string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         int ingridients = 0;
         string recipeFilename;  //Path
         string recipeName;      //Name
@@ -33,7 +34,7 @@ namespace InzynierkaTR.Page
             InitializeComponent();
         }
 
-        string CopyImages()
+        private string CopyImages()
         {
             var ofd = new OpenFileDialog();
             ofd.Filter = "Image jpeg(*.jpg)|*.jpg|Image png(*.png)|*.png";
@@ -76,9 +77,6 @@ namespace InzynierkaTR.Page
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             if (Directory.Exists(_finalPath))
             {
                 var filename2 = recipeFilename.Substring(recipeFilename.LastIndexOf("\\") + 1);
@@ -92,6 +90,7 @@ namespace InzynierkaTR.Page
             foreach (var ingridient in stackPanelRecipe.Children.OfType<TextBox>())
             {
                 ingridientText[i] = ingridient.Text;
+                addIngridientToList(ingridient.Text);
                 i++;
             }
             i = 0;
@@ -116,6 +115,30 @@ namespace InzynierkaTR.Page
             foreach (string line in iText)
             {
                 await file.WriteLineAsync(line);
+            }
+        }
+
+        void addIngridientToList(string ig)
+        {
+            bool isNew = true;
+            using (StreamReader textFile = new StreamReader(root + "\\Ingridients.txt"))
+            {
+                string ln;
+                while ((ln = textFile.ReadLine()) != null)
+                {
+                    if (ln == ig)
+                    {
+                        isNew = false;
+                        break;
+                    }
+                }
+            }
+            if (isNew)
+            {
+                using (StreamWriter sw = File.AppendText(root + "\\Ingridients.txt"))
+                {
+                    sw.Write(ig + "\n");
+                }
             }
         }
 
