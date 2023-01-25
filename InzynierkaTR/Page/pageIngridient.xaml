@@ -222,7 +222,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="10,0,0,10">
-                        <Image Source="{Binding Path}" Width="200" Height="200" Stretch="Fill" VerticalAlignment="Top" StretchDirection="UpOnly"/>
+                        <Image Source="{Binding Path}" Width="200" Height="200" Stretch="Fill" VerticalAlignment="Top" StretchDirection="UpOnly" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
                         <TextBox Name="ImageName" Margin="1" Foreground="#FF787878" Text="{Binding FileName}" HorizontalAlignment="Right" />
                     </StackPanel>
                 </DataTemplate>
