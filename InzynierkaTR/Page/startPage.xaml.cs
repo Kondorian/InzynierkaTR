@@ -57,8 +57,6 @@ namespace InzynierkaTR.Page
             this.NavigationService.Navigate(pageHistory);
         }
 
-
-
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

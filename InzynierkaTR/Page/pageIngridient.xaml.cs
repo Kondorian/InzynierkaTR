@@ -49,7 +49,9 @@ namespace InzynierkaTR.Page
         {
             ingridients++;
             string text = "Skladnik" + ingridients.ToString();
-            ComboBox myComboBox = new ComboBox() { Text = text };
+            Style style = this.FindResource("ComboBox") as Style;
+            ComboBox myComboBox = new ComboBox() { Text = text};
+            myComboBox.Style = style;
             
             foreach (string name in ingridientNames)
             {

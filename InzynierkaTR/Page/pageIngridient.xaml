@@ -153,6 +153,12 @@
             </Setter>
 
         </Style>
+        <Style BasedOn="{StaticResource {x:Type ComboBox}}"    
+               TargetType="ComboBox"
+               x:Key="ComboBox">
+            <Setter Property="Padding" Value="10 10 10 10" />
+            <Setter Property="FontFamily" Value="Berlin Sans FB" />
+        </Style>
 
     </Page.Resources>
     <Grid>
@@ -205,7 +211,7 @@
         </ScrollViewer>
 
         <Button x:Name="buttonSearch" Grid.Column="1" Grid.Row="9" HorizontalAlignment="Right" Grid.ColumnSpan="2" Click="buttonSearch_Click" >
-            <TextBlock Text="Search" Style="{StaticResource Tekst}"  FontSize="20"/>
+            <TextBlock Text="Szukaj" Style="{StaticResource Tekst}"  FontSize="20"/>
         </Button>
 
         <ListBox Name="ImageList" ItemsSource="{Binding ImageList}" Margin="10,10,10,10" 
@@ -241,7 +247,7 @@
 
 
         <Button x:Name="buttonBack" Margin="10 10 10 10" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave" Click="buttonBack_Click">
-            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" >Back</TextBlock>
+            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" >Wróć</TextBlock>
         </Button>
     </Grid>
 </Page>

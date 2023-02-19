@@ -143,11 +143,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-
+        
         <TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Grid.RowSpan="2" Style="{StaticResource Podtytul}">
-            Gotój z nami
+            Gotuj z nami
         </TextBlock>
-
+        <!--
         <Line Grid.Column="3" Grid.Row="2" Grid.RowSpan="8" 
               X1="0" X2="0" Y1="0" Y2="2000"
               ClipToBounds="True" HorizontalAlignment="Center" StrokeThickness="10" 
@@ -162,7 +162,7 @@
                 </LinearGradientBrush>
             </Line.Stroke>
         </Line>
-
+        -->
         <Button x:Name="listIngridient" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Click="listIngridient_Click">
             <TextBlock  Style="{StaticResource Tekst}">
             |> Dobierz składniki
@@ -182,7 +182,8 @@
         </Button>
 
         <Button x:Name="buttonBack" Margin="10 10 10 10" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave" MouseLeftButtonUp="buttonBack_MouseLeftButtonUp" Click="buttonBack_Click">
-            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" FontStyle="Normal" >Exit</TextBlock>
+            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" FontStyle="Normal" >Wyjdź</TextBlock>
         </Button>
+        
     </Grid>
 </Page>

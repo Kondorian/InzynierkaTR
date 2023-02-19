@@ -205,7 +205,7 @@
                    Grid.Row="3" Grid.Column="3" Grid.RowSpan="7" Grid.ColumnSpan="3" VerticalAlignment="Top"/>
 
         <Button x:Name="buttonBack" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" Click="buttonBack_Click" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave">
-            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" FontStyle="Normal" >Back</TextBlock>
+            <TextBlock x:Name="buttonBackText" Style="{StaticResource Tekst}" FontSize="20" FontStyle="Normal" >Wróć</TextBlock>
         </Button>
     </Grid>
 </Page>
