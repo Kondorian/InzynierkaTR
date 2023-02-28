@@ -148,14 +148,11 @@
         Przepisy:
         </TextBlock>
 
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="1" >
-
-        </TextBox>
-
         <ListBox Name="ImageList" ItemsSource="{Binding ImageList}" Margin="10,10,10,10" 
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                 Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="7" SelectionChanged="ImageList_SelectionChanged">
+                 SelectionChanged="ImageList_SelectionChanged"
+                 Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Grid.RowSpan="7" >
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -166,12 +163,17 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="10,0,0,10">
-                        <Image Source="{Binding Path}" Width="200" Height="200" Stretch="Fill" VerticalAlignment="Top" StretchDirection="UpOnly" MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
-                        <TextBox Name="ImageName" Margin="1" Foreground="#FF787878" Text="{Binding FileName}" HorizontalAlignment="Right" />
+                        <Image Source="{Binding Path}" 
+                               Width="200" Height="200" 
+                               Stretch="Fill" StretchDirection="UpOnly" 
+                               VerticalAlignment="Top"
+                               MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
+                        <TextBox Name="ImageName" Text="{Binding FileName}" 
+                                 Foreground="#FF787878" HorizontalAlignment="Right" />
                     </StackPanel>
                 </DataTemplate>
-
             </ListBox.ItemTemplate>
+            
             <ListBox.Template>
                 <ControlTemplate>
                     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" >

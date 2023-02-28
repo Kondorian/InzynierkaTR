@@ -38,24 +38,24 @@ namespace InzynierkaTR.Page
         void AddImages()
         {
             var files = Directory.GetFiles(System.IO.Path.Combine(root, "Images"), "*.*")
-                .Where(s => s.EndsWith(".jpg") || s.EndsWith(".png"));
+                .Where(s => s.EndsWith(".jpg") || s.EndsWith(".png"));  //List of jpg/png files
 
-            foreach (var file in files)
+            foreach (var file in files)     //Iterate through
             {
-                ImagePath id = new ImagePath()
+                ImagePath id = new ImagePath()  //New class:
                 {
-                    Path = file,
-                    FileName = fileName(file),
+                    Path = file,                //Path to image
+                    FileName = fileName(file),  //Image name
                 };
-                images.Add(id);
+                images.Add(id);                 //Add object to UI
             }
         }
 
         string fileName(string file)
         {
-            string fileName = System.IO.Path.GetFileName(file);
-            fileName = fileName.Substring(0, fileName.IndexOf("."));
-            return fileName;
+            string fileName = System.IO.Path.GetFileName(file);     //Get Filename with extension
+            fileName = fileName.Substring(0, fileName.IndexOf("."));//Remove extension
+            return fileName;    //Return name
         }
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

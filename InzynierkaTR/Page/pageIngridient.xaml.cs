@@ -23,7 +23,7 @@ namespace InzynierkaTR.Page
     /// </summary>
     public partial class pageIngridient
     {
-        int ingridients = 0;
+        int ingredients = 0;
         List<string> ingridientNames = new List<string>();
         List<ImagePath> images = new List<ImagePath>();
         string root = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -47,23 +47,22 @@ namespace InzynierkaTR.Page
 
         private void buttonPlus_Click(object sender, RoutedEventArgs e)
         {
-            ingridients++;
-            string text = "Skladnik" + ingridients.ToString();
-            Style style = this.FindResource("ComboBox") as Style;
-            ComboBox myComboBox = new ComboBox() { Text = text};
-            myComboBox.Style = style;
+            ingredients++;  //Number of ingridients
+            string text = "Skladnik" + ingredients.ToString();  //Placeholder text
+            Style style = this.FindResource("ComboBox") as Style;   //ComboBox style
+            ComboBox myComboBox = new ComboBox() { Text = text};    //ComboBox element
+            myComboBox.Style = style;   //Set ComboBox style
             
             foreach (string name in ingridientNames)
             {
-                myComboBox.Items.Add(name);
+                myComboBox.Items.Add(name); //List of existing ingredients
             }
-
-            stackPanelRecipe.Children.Add(myComboBox);
+            stackPanelRecipe.Children.Add(myComboBox);  //Add ComboBox to Stack panel
         }
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
-            string[] igs = new string[ingridients];
+            string[] igs = new string[ingredients];
             List<bool> bl = new List<bool>();
             List<string> recipeList = new List<string>();
             int i = 0;
@@ -93,7 +92,7 @@ namespace InzynierkaTR.Page
                         if (ln == "") { break; }
                         int length = ln.IndexOf("|");
                         ln = ln.Substring(0, length);
-                        for (int j = 0; j < ingridients; j++)
+                        for (int j = 0; j < ingredients; j++)
                         {
                             if (ln == igs[j])
                             {
