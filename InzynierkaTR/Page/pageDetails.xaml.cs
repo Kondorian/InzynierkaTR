@@ -48,31 +48,31 @@ namespace InzynierkaTR.Page
                 string Weight = "";
                 bool LastLine = false;
 
-                while ((ln = textFile.ReadLine()) != null)
+                while ((ln = textFile.ReadLine()) != null)  //File open
                 {
-                    if (LastLine)
+                    if (LastLine)   //When program reads last line (Instruction)
                     {
                         Ingridient = ln;
                         break;
                     }
 
-                    if (ln != "")
+                    if (ln != "")   //Line with ingredient
                     {
-                        int length = ln.IndexOf("|");
-                        Ingridient = Ingridient + ln.Substring(0,length) + "\n";
-                        Weight = Weight + ln.Substring(length + 1) + "\n";
+                        int length = ln.IndexOf("|");   //Using separator "|" to separate type from value
+                        Ingridient = Ingridient + ln.Substring(0,length) + "\n";    //Retrieve type
+                        Weight = Weight + ln.Substring(length + 1) + "\n";          //Retrieve value
                     }
-                    else
+                    else //Using empty line to separate ingredients from instruction
                     {
-                        IngridientList.Text = Ingridient;
-                        Ingridient = "";
-                        WeightList.Text = Weight;
+                        IngridientList.Text = Ingridient;   //Apply ingredient type text to UI
+                        Ingridient = "";    
+                        WeightList.Text = Weight;           //Apply ingredient value text to UI
                         Weight = "";
-                        LastLine = true;
+                        LastLine = true;                    //Set last line for instruction read
                     }
                 }
-                Instruction.Text = Ingridient;
-                textFile.Close();
+                Instruction.Text = Ingridient;  //Apply
+                textFile.Close();   //File close
             }
         }
 

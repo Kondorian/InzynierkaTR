@@ -36,21 +36,18 @@ namespace InzynierkaTR.Page
 
         private string CopyImages()
         {
-            var ofd = new OpenFileDialog();
-            ofd.Filter = "Image jpeg(*.jpg)|*.jpg|Image png(*.png)|*.png";
+            var ofd = new OpenFileDialog(); //New dialog window
+            ofd.Filter = "Image Files(*.jpg;*.png)|*.jpg;*.png"; //Show only images
             ofd.DefaultExt = ".jpeg";
 
             // Process open file dialog box results 
             if (ofd.ShowDialog() == true)
             {
-                recipeFilename = ofd.FileName;
-
-                
-                var file = System.IO.Path.GetFullPath(ofd.FileName);
-
-                var filename2 = file.Substring(file.LastIndexOf("\\") + 1);
-                recipeName = filename2.Substring(0, filename2.IndexOf("."));
-                return filename2;
+                recipeFilename = ofd.FileName;  //File path
+                var filename2 = recipeFilename.Substring(
+                    recipeFilename.LastIndexOf("\\") + 1);  //Get Filename with extension
+                recipeName = filename2.Substring(0, filename2.IndexOf("."));    //Remove extension
+                return recipeName;
             }
             return null;
         }
@@ -65,46 +62,45 @@ namespace InzynierkaTR.Page
         private void buttonPlus_Click(object sender, RoutedEventArgs e)
         {
             //Add Textbox to Stackpanel
-            ingridients++;
-            string text = "Skladnik " + ingridients.ToString();
+            ingridients++;  //Number of ingredients
+            string text = "Skladnik " + ingridients.ToString(); //Placeholder text for ingredient type
             TextBox myTextBox = new TextBox() { Text = text};
-            stackPanelRecipe.Children.Add(myTextBox);
+            stackPanelRecipe.Children.Add(myTextBox);           //Add textbox element
 
-            text = "Ilosc" + ingridients.ToString();
+            text = "Ilosc" + ingridients.ToString();    //Placeholder text for ingredient value
             myTextBox = new TextBox() { Text = text};
-            stackPanelWeight.Children.Add(myTextBox);
+            stackPanelWeight.Children.Add(myTextBox);   //Add textbox element
         }
 
         private void buttonSave_Click(object sender, RoutedEventArgs e)
         {
             if (Directory.Exists(_finalPath))
             {
-                var filename2 = recipeFilename.Substring(recipeFilename.LastIndexOf("\\") + 1);
-
-                System.IO.File.Copy(recipeFilename, System.IO.Path.Combine(_finalPath, filename2), true);
+                var filename2 = recipeFilename.Substring(recipeFilename.LastIndexOf("\\") + 1); //Path to image
+                System.IO.File.Copy(recipeFilename, 
+                    System.IO.Path.Combine(_finalPath, filename2), true); //Copy image to app folder
             }
-
             string[] ingridientText = new string[ingridients+2];
             int i = 0;
-
             foreach (var ingridient in stackPanelRecipe.Children.OfType<TextBox>())
             {
-                ingridientText[i] = ingridient.Text;
-                addIngridientToList(ingridient.Text);
+                ingridientText[i] = ingridient.Text;    //Save ingredient type to array
+                addIngridientToList(ingridient.Text);   //Add ingredient to list if ingredients if not exist
                 i++;
             }
             i = 0;
             foreach (var ingridient in stackPanelWeight.Children.OfType<TextBox>())
             {
-                ingridientText[i] = ingridientText[i] + "|" + ingridient.Text;
+                ingridientText[i] = ingridientText[i] + "|" + 
+                    ingridient.Text;  //Combine ingredient type and value "Type|Value"
                 i++;
             }
-            ingridientText[i] = "";
-            ingridientText[i+1] = instructionBox.Text;
+            ingridientText[i] = ""; //Empty line as separator
+            ingridientText[i+1] = instructionBox.Text;  //Add instruction text
 
-            SaveFile(ingridientText, recipeName, _finalPath);
+            SaveFile(ingridientText, recipeName, _finalPath);   //Save to txt
 
-            startPage startPage = new startPage();
+            startPage startPage = new startPage();      //Navigate to startPage
             this.NavigationService.Navigate(startPage);
         }
 

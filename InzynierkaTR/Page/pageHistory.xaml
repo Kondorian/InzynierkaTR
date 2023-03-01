@@ -220,10 +220,10 @@
             Instrukcja: 
         </TextBlock>
 
-        <TextBox x:Name="instructionBox" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="5" Height="500" VerticalAlignment="Top"/>
+        <TextBox x:Name="instructionBox" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Grid.RowSpan="5" Height="500" VerticalAlignment="Top" TextWrapping="WrapWithOverflow"/>
 
         <Button x:Name="buttonSave" Margin="10 10 10 10" HorizontalAlignment="Right" Grid.Row ="9" Grid.Column="5" Click="buttonSave_Click">
-            <TextBlock x:Name="buttonSaveText" Style="{StaticResource Tekst}" FontSize="20" >Save</TextBlock>
+            <TextBlock x:Name="buttonSaveText" Style="{StaticResource Tekst}" FontSize="20" >Zapisz</TextBlock>
         </Button>
 
         <Button x:Name="buttonBack" Margin="10 10 10 10" HorizontalAlignment="Right" Grid.Row ="1" Grid.Column="5" MouseEnter="buttonBack_MouseEnter" MouseLeave="buttonBack_MouseLeave" Click="buttonBack_Click">

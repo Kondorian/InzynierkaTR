@@ -62,85 +62,80 @@ namespace InzynierkaTR.Page
 
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
-            string[] igs = new string[ingredients];
-            List<bool> bl = new List<bool>();
+            string[] igs = new string[ingredients]; //Array of inserted ingredients
+            List<bool> bl = new List<bool>();       
             List<string> recipeList = new List<string>();
             int i = 0;
 
             foreach (var ingridient in stackPanelRecipe.Children.OfType<ComboBox>())
-            {
-                if (ingridient.Text != "")
+            {   //Iterate through combobox values
+                if (ingridient.Text != "")  //If not empty
                 {
-                    igs[i] = ingridient.Text;
+                    igs[i] = ingridient.Text;   // Save value
                 }
-                i++;
+                i++;    
             }
+            i = 0;
+
 
             var files = Directory.GetFiles(System.IO.Path.Combine(root, "Images"), "*.*")
-                .Where(s => s.EndsWith(".txt"));
-            i=0;
-
+                .Where(s => s.EndsWith(".txt"));    //Get files
+            
             foreach (var file in files) // Checking if has ingridient
             {
-                bl.Add(false);
+                bl.Add(false);  //Create bool for this file
                 using (StreamReader textFile = new StreamReader(file))
-                {
+                {               //Read file
                     string ln;
-
                     while ((ln = textFile.ReadLine()) != null)
-                    {
-                        if (ln == "") { break; }
-                        int length = ln.IndexOf("|");
-                        ln = ln.Substring(0, length);
-                        for (int j = 0; j < ingredients; j++)
+                    {   //Read line
+                        if (ln == "") { break; }    //Break when stopped reading ingredients
+                        int length = ln.IndexOf("|");   //Separator
+                        ln = ln.Substring(0, length);   //Separate
+                        for (int j = 0; j < ingredients; j++)   //Iterate through user input
                         {
-                            if (ln == igs[j])
+                            if (ln == igs[j])   //If ingredient/recipe match found
                             {
-                                bl[i] = true;
+                                bl[i] = true;   //Add file to list
                             }
                         }
-                        if (bl[i]) { break; }
-
+                        if (bl[i]) { break; }   //Break if found match
                     }
-                    if (bl[i])
+                    if (bl[i])  //Add recipe to list
                     {
-                        recipeTitle = fileName(file);
-                        string path = root + "\\Images\\" + recipeTitle + ".png";
+                        recipeTitle = fileName(file);   //File name
+                        string path = root + "\\Images\\" + recipeTitle + ".png";   //Check if png exists
                         if (!File.Exists(path))
                         {
-                            path = root + "\\Images\\" + recipeTitle + ".jpg";
+                            path = root + "\\Images\\" + recipeTitle + ".jpg";  //If not, use jpg
                             if (!File.Exists(path))
                             {
-                                break;
+                                break;          //Error
                             }
                             else
                             {
-                                addFile(path);
+                                ImagePath id = new ImagePath()
+                                {
+                                    Path = file,
+                                    FileName = fileName(file),
+                                };
+                                images.Add(id);  //Add image.jpg to recipe
                             }
                         }
                         else
                         {
-                            addFile(path);
+                            ImagePath id = new ImagePath()
+                            {
+                                Path = file,
+                                FileName = fileName(file),
+                            };
+                            images.Add(id); //Add image.png to recipe
                         }
-                        
                     }
                     i++;
-                    textFile.Close();
+                    textFile.Close();   //Close file
                 }
             }
-            /*
-            var files = Directory.GetFiles(System.IO.Path.Combine(root, "Images"), "*.*")
-                .Where(s => s.EndsWith(".jpg") || s.EndsWith(".png"));
-
-            foreach (var file in files)
-            {
-                ImagePath id = new ImagePath()
-                {
-                    Path = file,
-                    FileName = fileName(file),
-                };
-                images.Add(id);
-            }*/
             ImageList.ItemsSource = images;
         }
 
@@ -149,16 +144,6 @@ namespace InzynierkaTR.Page
             string fileName = System.IO.Path.GetFileName(file);
             fileName = fileName.Substring(0, fileName.IndexOf("."));
             return fileName;
-        }
-
-        void addFile(string file)
-        {
-            ImagePath id = new ImagePath()
-            {
-                Path = file,
-                FileName = fileName(file),
-            };
-            images.Add(id);
         }
 
         private void ImageList_SelectionChanged(object sender, SelectionChangedEventArgs e)
